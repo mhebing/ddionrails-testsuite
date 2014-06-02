@@ -1,71 +1,71 @@
-run_all_test <- function(path){
-  setwd(path)
-  test_relation("answer_list_in_questions_not_in_answers", read.csv("questions.csv"), read.csv("answers.csv"), "answer_list")
-  test_relation("answer_list_in_answers_not_in_questions", read.csv("answers.csv"), read.csv("questions.csv"), "answer_list")
+run_all_test <- function(path_in){
+  setwd(path_in)
+  test_relation(path_in, "answer_list_in_questions_not_in_answers", "questions", "answers", "answer_list")
+  test_relation(path_in, "answer_list_in_answers_not_in_questions", "answers", "questions", "answer_list")
+  
+  test_relation(path_in, "analysis_unit_not_in_analysis_units", "logical_datasets", "analysis_units", "analysis_unit")
+  test_relation(path_in, "analysis_unit_not_in_logical_datasets", "analysis_units", "logical_datasets", "analysis_unit")
 
-  test_relation("analysis_unit_not_in_analysis_units", read.csv("logical_datasets.csv"), read.csv("analysis_units.csv"), "analysis_unit")
-  test_relation("analysis_unit_not_in_logical_datasets", read.csv("analysis_units.csv"), read.csv("logical_datasets.csv"), "analysis_unit")
+  test_relation(path_in, "study_not_in_studies", "logical_datasets", "studies", "study")
+  test_relation(path_in, "study_not_in_logical_datasets", "studies", "logical_datasets", "study")
 
-  test_relation("study_not_in_studies", read.csv("logical_datasets.csv"), read.csv("studies.csv"), "study")
-  test_relation("study_not_in_logical_datasets", read.csv("studies.csv"), read.csv("logical_datasets.csv"), "study")
+  test_relation(path_in, "period_not_in_periods", "logical_datasets", "periods", "period")
+  test_relation(path_in, "period_not_in_logical_datasets", "periods", "logical_datasets", "period")
+  
+  test_relation(path_in, "conceptual_datasets_not_in_conceptual_datasets", "logical_datasets", "conceptual_datasets", "conceptual_dataset")
+  test_relation(path_in, "conceptual_datasets_not_in_logical_datasets", "conceptual_datasets", "logical_datasets", "conceptual_dataset")
+  
+  test_relation(path_in, "study_in_logical_variables_not_in_studies", "logical_variables", "studies", "study")
+  test_relation(path_in, "study_in_study_not_in_logical_variables", "studies", "logical_variables", "study")
+  
+  test_relation(path_in, "dataset_in_logical_variables_not_in_logicaldatasets", "logical_variables", "logical_datasets", "dataset")
+  test_relation(path_in, "dataset_in_logicaldatasets_not_in_logical_variables", "logical_datasets", "logical_variables", "dataset")
 
-  test_relation("period_not_in_periods", read.csv("logical_datasets.csv"), read.csv("periods.csv"), "period")
-  test_relation("period_not_in_logical_datasets", read.csv("periods.csv"), read.csv("logical_datasets.csv"), "period")
-  
-  test_relation("conceptual_datasets_not_in_conceptual_datasets", read.csv("logical_datasets.csv"), read.csv("conceptual_datasets.csv"), "conceptual_dataset")
-  test_relation("conceptual_datasets_not_in_logical_datasets", read.csv("conceptual_datasets.csv"), read.csv("logical_datasets.csv"), "conceptual_dataset")
-  
-  test_relation("study_in_logical_variables_not_in_studies", read.csv("logical_variables.csv"), read.csv("studies.csv"), "study")
-  test_relation("study_in_study_not_in_logical_variables", read.csv("studies.csv"), read.csv("logical_variables.csv"), "study")
-  
-  test_relation("dataset_in_logical_variables_not_in_logicaldatasets", read.csv("logical_variables.csv"), read.csv("logical_datasets.csv"), "dataset")
-  test_relation("dataset_in_logicaldatasets_not_in_logical_variables", read.csv("logical_datasets.csv"), read.csv("logical_variables.csv"), "dataset")
+  test_relation(path_in, "concept_in_logical_variables_not_in_concepts", "logical_variables", "concepts", "concept")
+  test_relation(path_in, "concept_in_concepts_not_in_logical_variables", "concepts", "logical_variables", "concept")
 
-  test_relation("concept_in_logical_variables_not_in_concepts", read.csv("logical_variables.csv"), read.csv("concepts.csv"), "concept")
-  test_relation("concept_in_concepts_not_in_logical_variables", read.csv("concepts.csv"), read.csv("logical_variables.csv"), "concept")
+  test_relation(path_in, "topic_in_concepts_not_in_topics", "concepts", "topics", "topic")
+  test_relation(path_in, "topic_in_topics_not_in_concepts", "topics", "concepts", "topic")
 
-  test_relation("topic_in_concepts_not_in_topics", read.csv("concepts.csv"), read.csv("topics.csv"), "topic")
-  test_relation("topic_in_topics_not_in_concepts", read.csv("topics.csv"), read.csv("concepts.csv"), "topic")
+  test_relation(path_in, "study_in_datasets_distribution_not_in_studies", "datasets_distributions", "studies", "study")
 
-  test_relation("study_in_datasets_distribution_not_in_studies", read.csv("datasets_distributions.csv"), read.csv("studies.csv"), "study")
+  test_relation(path_in, "dataset_in_datasets_distribution_not_in_logical_datasets","datasets_distributions", "logical_datasets", "study")
+  
+  test_relation(path_in, "distribution_in_datasets_distribution_not_in_distributions", "datasets_distributions","distributions", "distribution")
+  
+  test_relation(path_in, "study_in_distributions_not_in_studies", "distributions", "studies", "study")
+  
+  test_relation(path_in, "study_in_script_generator_not_in_studies", "script_generators", "studies", "study")
+  
+  test_relation(path_in, "distribution_in_script_generator_not_in_distributions", "script_generators", "distributions", "distribution")
+  
+  test_relation(path_in, "questionnaire_in_questions_not_in_questionnaires", "questions", "questionnaires", "questionnaire")
 
-  test_relation("dataset_in_datasets_distribution_not_in_logical_datasets", read.csv("datasets_distributions.csv"), read.csv("logical_datasets.csv"), "study")
+  test_relation(path_in, "questionnaire_in_answers_not_in_questionnaires",  "answers", "questionnaires", "questionnaire")
   
-  test_relation("distribution_in_datasets_distribution_not_in_distributions", read.csv("datasets_distributions.csv"), read.csv("distributions.csv"), "distribution")
+  test_root_question(path_in, "AnzahlRoots", "questions")
   
-  test_relation("study_in_distributions_not_in_studies", read.csv("distributions.csv"), read.csv("studies.csv"), "study")
+  test_scales(path_in, "kein_cat_kein_answer_list", "questions")
   
-  test_relation("study_in_script_generator_not_in_studies", read.csv("script_generators.csv"), read.csv("studies.csv"), "study")
+  test_unique(path_in, "dataset_in_logical_datasets_not_unique", "logical_datasets", c("study", "dataset"))
   
-  test_relation("distribution_in_script_generator_not_in_distributions", read.csv("script_generators.csv"), read.csv("distributions.csv"), "distribution")
-  
-  test_relation("questionnaire_in_questions_not_in_questionnaires", read.csv("questions.csv"), read.csv("questionnaires.csv"), "questionnaire")
+  test_unique(path_in, "variable_in_logical_variables_not_unique", "logical_variables", c("dataset", "variable"))
 
-  test_relation("questionnaire_in_answers_not_in_questionnaires",  read.csv("answers.csv"), read.csv("questionnaires.csv"), "questionnaire")
+  test_identifier(path_in, "iden_study", "studies", "study")
   
-  test_root_question("AnzahlRoots", read.csv("questions.csv"))
+  test_identifier(path_in, "iden_period", "periods", "period")
   
-  test_scales("kein_cat_kein_answer_list", read.csv("questions.csv"))
+  test_identifier(path_in, "iden_analysis_unit", "analysis_units", "analysis_unit")
   
-  test_unique("dataset_in_logical_datasets_not_unique", read.csv("logical_datasets.csv"), c("study", "dataset"))
+  test_identifier(path_in, "iden_dataset", "logical_datasets", "dataset")
   
-  test_unique("variable_in_logical_variables_not_unique", read.csv("logical_variables.csv"), c("dataset", "variable"))
-
-  test_identifier("iden_study", read.csv("studies.csv"), "study")
+  test_identifier(path_in, "iden_conceptual_dataset", "conceptual_datasets", "conceptual_dataset")
   
-  test_identifier("iden_period", read.csv("periods.csv"), "period")
+  test_identifier(path_in, "iden_topic", "topics", "topic")
   
-  test_identifier("iden_analysis_unit", read.csv("analysis_units.csv"), "analysis_unit")
+  test_identifier(path_in, "iden_concept", "concepts", "concept")
   
-  test_identifier("iden_dataset", read.csv("logical_datasets.csv"), "dataset")
+  test_identifier(path_in, "iden_distribution", "distributions", "distribution")
   
-  test_identifier("iden_conceptual_dataset", read.csv("conceptual_datasets.csv"), "conceptual_dataset")
-  
-  test_identifier("iden_topic", read.csv("topics.csv"), "topic")
-  
-  test_identifier("iden_concept", read.csv("concepts.csv"), "concept")
-  
-  test_identifier("iden_distribution", read.csv("distributions.csv"), "distribution")
-  
-  test_identifier("iden_script_generator", read.csv("script_generators.csv"), "script_generator")
+  test_identifier(path_in, "iden_script_generator", "script_generators", "script_generator")
 }
