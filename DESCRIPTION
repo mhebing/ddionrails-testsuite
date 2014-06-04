@@ -1,0 +1,9 @@
+Package: ddionrailstestsuite
+Type: Package
+Title: Testing DDI on Rails' CSV-Format Data Import
+Version: 1.0
+Date: 2014-05-20
+Author: Marcel Hebing <MHebing@diw.de>; Linda Zhu <LZhu@diw.de>
+Maintainer: Marcel Hebing <MHebing@diw.de>, Linda Zhu <LZhu@diw.de>
+Description: Several tests to test the correctness of the CSV tables for DDI on Rails' data import. In case of errors those are listed and written into new CSV files.
+License: ..
