@@ -3,6 +3,7 @@ test_identifier <- function(path_in, name, table, variable){
     message(paste0("table ", table, " does not exist in ", path_in))
   }
   else{
+    setwd(path_in)
     tabledata <- read.csv(paste(table, ".csv", sep=""))
     fun <- function(x) x %in% x[duplicated(x)] 
     if(length(tabledata[,variable][fun(tabledata[,variable])])!=0){   
@@ -12,3 +13,4 @@ test_identifier <- function(path_in, name, table, variable){
     }
   }  
 }
+

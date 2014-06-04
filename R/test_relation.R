@@ -3,7 +3,7 @@ test_relation <- function(path_in, name, table1, table2, column){
     message(paste0("at least one of the tables ", table1, " or ", table2, " does not exist in ", path_in))
   }
   else{
-  
+  setwd(path_in)
   table1data <- read.csv(paste(table1, ".csv", sep=""))
   table2data <- read.csv(paste(table2, ".csv", sep=""))
   s <- sum(!levels(table1data[,column]) %in% levels(table2data[,column]))

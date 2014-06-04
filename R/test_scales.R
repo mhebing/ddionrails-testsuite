@@ -3,6 +3,7 @@ test_scales <- function(path_in, name, tableQuestions){
     message(paste0("table ", tableQuestions, " does not exist in ", path_in))
   }
   else{
+    setwd(path_in)
   tableQuestionsdata <- read.csv(paste(tableQuestions, ".csv", sep=""))
   s<-sum(tableQuestionsdata$answer_list!="" & tableQuestionsdata$scale!="cat")
   s2 <- sum(tableQuestionsdata$answer_list=="" & tableQuestionsdata$scale=="cat")

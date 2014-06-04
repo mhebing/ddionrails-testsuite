@@ -3,6 +3,7 @@ test_root_question <- function(path_in, name, tableQuestions){
     message(paste0("table ", tableQuestions, " does not exist in ", path_in))
   }
   else{
+    setwd(path_in)
   tableQuestionsdata <- read.csv(paste(tableQuestions, ".csv", sep=""))
   qq <- levels(tableQuestionsdata$question)
   out <- data.frame(question = "", Rootelement = "", stringsAsFactors = FALSE)
